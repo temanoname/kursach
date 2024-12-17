@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/graphics/css/add-review.css">
+    <title>Добавить отзыв</title>
+</head>
+<body>
+<div class="form-container">
+    <header>
+        <h1>Добавить отзыв</h1>
+    </header>
+    <main>
+        <form th:action="@{/reviews/add}" method="post">
+            <label for="users">Автор:</label>
+            <select name="users.id" id="users" required>
+                <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}"></option>
+            </select>
+
+            <label for="rating">Рейтинг:</label>
+            <input type="number" name="rating" id="rating" min="1" max="5" required>
+
+            <label for="comment">Отзыв:</label>
+            <textarea name="comment" id="comment" rows="4" required></textarea>
+
+            <button type="submit">Сохранить</button>
+        </form>
+    </main>
+    <nav>
+        <a href="/main">Назад</a>
+        <a th:href="@{/reviews}">Открыть отзывы</a>
+    </nav>
+</div>
+</body>
+</html>

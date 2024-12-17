@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/graphics/css/services.css">
+    <title>Услуги | АвтоПрофи</title>
+</head>
+<body>
+<main>
+    <header>
+        <h1>Услуги | АвтоПрофи</h1>
+    </header>
+    <section>
+        <!-- Таблица с услугами -->
+        <table>
+            <thead>
+            <tr>
+                <th>Название услуги</th>
+                <th>Описание услуги</th>
+                <th>Цена</th>
+                <th>Действия</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="service : ${services}">
+                <td th:text="${service.name}"></td>
+                <td th:text="${service.description}"></td>
+                <td th:text="${service.price}"></td>
+                <td class="actions">
+                    <a th:if="${isAdmin}" th:href="@{/services/edit/{id}(id=${service.id})}">Редактировать</a>
+                    <a th:if="${isAdmin}" th:href="@{/services/delete/{id}(id=${service.id})}" th:onclick="return confirm('Удалить эту услугу?')">Удалить</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <div class="center-button">
+        <a th:if="${isAdmin}" th:href="@{/services/add}" class="btn"}>Добавить услугу</a>
+    </div>
+</main>
+</body>
+</html>

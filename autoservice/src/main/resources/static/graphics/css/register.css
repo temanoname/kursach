@@ -1,0 +1,129 @@
+/* Общий стиль страницы */
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background: linear-gradient(135deg, #28a745, #6bcf63);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Контейнер формы */
+.registration-container {
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    max-width: 450px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Заголовок */
+h2 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #28a745;
+}
+
+/* Формы */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Контейнеры для полей формы */
+form div {
+    margin-bottom: 20px;
+}
+
+/* Метки */
+label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left;
+}
+
+/* Поля ввода */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.3);
+    outline: none;
+}
+
+/* Кнопка */
+button {
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #28a745, #6bcf63);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #22863a, #5cc055);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Нижний колонтитул формы */
+.form-footer {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+/* Ссылка в нижнем колонтитуле */
+.form-footer a {
+    color: #28a745;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.form-footer a:hover {
+    color: #22863a;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .registration-container {
+        padding: 20px 30px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 14px;
+    }
+}

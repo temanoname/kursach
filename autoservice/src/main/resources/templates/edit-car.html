@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/graphics/css/edit-car.css">
+  <title>Редактировать автомобиль</title>
+</head>
+<body>
+<main>
+  <section class="form-container">
+    <header>
+      <h1>Редактировать автомобиль</h1>
+    </header>
+    <form th:action="@{/cars/edit/{id}(id=${car.id})}" method="post">
+      <label for="brand">Бренд:</label>
+      <input type="text" id="brand" name="brand" th:value="${car.brand}" placeholder="Введите бренд" required>
+
+      <label for="model">Модель:</label>
+      <input type="text" id="model" name="model" th:value="${car.model}" placeholder="Введите модель" required>
+
+      <label for="year">Год:</label>
+      <input type="number" id="year" name="year" th:value="${car.year}" placeholder="Введите год выпуска" min="1900" max="2024" required>
+
+      <label for="engine_volume">Объем двигателя (л):</label>
+      <input type="number" id="engine_volume" name="engine_volume" step="0.1" th:value="${car.engine_volume}" placeholder="Введите объем двигателя" required>
+
+      <label for="mileage">Пробег (км):</label>
+      <input type="number" id="mileage" name="mileage" th:value="${car.mileage}" placeholder="Введите пробег" required>
+
+      <label for="owner">Владелец:</label>
+      <select id="owner" name="users.id" required>
+        <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}" th:selected="${user.id == car.users.id}"></option>
+      </select>
+
+      <button type="submit">Сохранить изменения</button>
+    </form>
+  </section>
+</main>
+</body>
+</html>

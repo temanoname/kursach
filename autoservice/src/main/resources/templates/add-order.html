@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/graphics/css/add-order.css">
+  <title>Добавить заказ</title>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('order_date').setAttribute('min', today);
+    });
+  </script>
+</head>
+<body>
+<div class="form-container">
+  <header>
+    <h1>Добавить заказ</h1>
+  </header>
+  <main>
+    <form th:action="@{/orders/add}" method="post">
+
+      <input type="hidden"
+             th:name="${_csrf.parameterName}"
+             th:value="${_csrf.token}" />
+
+      <label for="services">Услуга:</label>
+      <select id="services" name="services" required>
+        <option th:each="service : ${services}" th:value="${service.id}" th:text="${service.description}"></option>
+      </select>
+
+      <label for="cars">Автомобиль:</label>
+      <select id="cars" name="cars" required>
+        <option th:each="car : ${cars}" th:value="${car.id}" th:text="${car.brand + ' ' + car.model}"></option>
+      </select>
+
+      <label for="order_time">Время заказа:</label>
+      <input type="time" id="order_time" name="order_time" required>
+
+      <label for="order_date">Дата заказа:</label>
+      <input type="date" id="order_date" name="order_date" required>
+
+      <button type="submit">Добавить</button>
+    </form>
+    <nav>
+      <a href="/main">Назад</a>
+      <a th:href="@{/orders}">Открыть список заказов</a>
+    </nav>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/graphics/css/add-car.css">
+  <title>Добавить автомобиль</title>
+</head>
+<body>
+<main>
+  <section class="form-container">
+    <header>
+      <h1>Добавить автомобиль</h1>
+    </header>
+    <form th:action="@{/cars/add}" th:object="${car}" method="post">
+      <label for="brand">Бренд:</label>
+      <input type="text" id="brand" th:field="*{brand}" placeholder="Введите бренд" required>
+
+      <label for="model">Модель:</label>
+      <input type="text" id="model" th:field="*{model}" placeholder="Введите модель" required>
+
+      <label for="year">Год:</label>
+      <input type="number" id="year" th:field="*{year}" placeholder="Введите год выпуска" min="1900" max="2024" required>
+
+      <label for="engine_volume">Объем двигателя (л):</label>
+      <input type="number" id="engine_volume" th:field="*{engine_volume}" step="0.1" placeholder="Введите объем двигателя" required>
+
+      <label for="mileage">Пробег (км):</label>
+      <input type="number" id="mileage" th:field="*{mileage}" placeholder="Введите пробег" required>
+
+      <label for="owner">Владелец:</label>
+      <select id="owner" th:field="*{users.id}" required>
+        <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}" th:selected="${user.id == currentUser.id}" ></option>
+      </select>
+
+      <button type="submit">Добавить автомобиль</button>
+    </form>
+  </section>
+</main>
+</body>
+</html>

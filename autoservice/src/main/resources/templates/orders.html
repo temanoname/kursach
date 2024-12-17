@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/graphics/css/orders.css">
+  <title>Список заказов</title>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Список заказов</h1>
+  </header>
+  <section>
+    <table>
+      <thead>
+      <tr>
+        <th>Услуга</th>
+        <th>Марка автомобиля</th>
+        <th>Модель</th>
+        <th>Дата</th>
+        <th>Время</th>
+        <th>Действия</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="order : ${orders}">
+        <td th:text="${order.services.name}"></td>
+        <td th:text="${order.cars.brand}"></td>
+        <td th:text="${order.cars.model}"></td>
+        <td th:text="${order.order_date}"></td>
+        <td th:text="${order.order_time}"></td>
+
+        <td>
+          <form th:action="@{/orders/update-status/{id}(id=${order.id})}" method="post">
+            <input type="checkbox" name="completed" th:checked="${order.completed}" />
+            <button type="submit">Завершить заказ</button>
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>

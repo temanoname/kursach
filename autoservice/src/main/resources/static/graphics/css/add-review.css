@@ -1,0 +1,121 @@
+/* Общий стиль страницы */
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Контейнер формы */
+.form-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Заголовок */
+.form-container h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Формы */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Метки */
+label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+}
+
+/* Поля ввода и выбора */
+select, input[type="number"], textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+select:focus, input[type="number"]:focus, textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Кнопка */
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: white;
+    color: #4CAF50;
+    border: 2px solid #4CAF50;
+    transform: translateY(-2px);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Стили навигации */
+nav {
+    margin-top: 20px;
+    text-align: center;
+}
+
+nav a {
+    display: inline-block;
+    margin: 10px;
+    color: #4CAF50;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #45a049;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 20px;
+    }
+
+    .form-container h1 {
+        font-size: 24px;
+    }
+
+    .form-container button[type="submit"] {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+}
